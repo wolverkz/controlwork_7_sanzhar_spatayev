@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Delete Entry</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <div class="card shadow">
+        <div class="card-header">
+          <h1 class="text-danger">Delete Entry</h1>
+        </div>
+        <div class="card-body">
+          <p class="lead">Are you sure you want to delete the following entry?</p>
+          <ul class="list-unstyled">
+            <li><strong>Name:</strong> {{ entry.name }}</li>
+            <li><strong>Email:</strong> {{ entry.email }}</li>
+            <li><strong>Description:</strong> {{ entry.desc }}</li>
+          </ul>
+          <form method="post" action="{% url 'confirm_delete' entry.pk %}">
+            {% csrf_token %}
+            <input type="submit" value="Yes">
+            <a href="{% url 'guestbook' %}">No</a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
